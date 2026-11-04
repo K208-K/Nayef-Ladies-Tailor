@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+@theme {
+  --color-midnight: #171512;
+  --color-champagne: #D2B477;
+  --color-champagne-dark: #B59557;
+  --color-ivory: #F5F0E7;
+  --color-ivory-deep: #EBE3D5;
+  --color-bronze: #9B8873;
+  --font-display-en: "Cormorant Garamond", Georgia, serif;
+  --font-body-en: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display-ar: "Noto Naskh Arabic", serif;
+  --font-body-ar: "Noto Sans Arabic", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: #F5F0E7;
+    color: #171512;
+  }
+
+  html[dir="ltr"] {
+    font-family: var(--font-body-en);
+  }
+
+  html[dir="rtl"] {
+    font-family: var(--font-body-ar);
+  }
+
+  html[dir="ltr"] .font-display {
+    font-family: var(--font-display-en);
+  }
+
+  html[dir="rtl"] .font-display {
+    font-family: var(--font-display-ar);
+  }
+
+  h1, h2, h3, .balance-text {
+    text-wrap: balance;
+  }
+}
+
+/* Subtle Arabic Geometric Mashrabiya Lattice Overlay (Pure SVG/CSS) */
+.bg-mashrabiya {
+  background-image: radial-gradient(circle at center, rgba(210, 180, 119, 0.14) 1px, transparent 1px),
+    linear-gradient(45deg, rgba(210, 180, 119, 0.05) 25%, transparent 25%, transparent 75%, rgba(210, 180, 119, 0.05) 75%),
+    linear-gradient(-45deg, rgba(210, 180, 119, 0.05) 25%, transparent 25%, transparent 75%, rgba(210, 180, 119, 0.05) 75%);
+  background-size: 36px 36px;
+}
+
+/* 3D Boutique Glass Door Perspective Utilities */
+.boutique-perspective {
+  perspective: 1600px;
+  perspective-origin: 50% 52%;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+/* Hide scrollbars cleanly for horizontal filter bars */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

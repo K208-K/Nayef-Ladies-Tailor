@@ -1,0 +1,8 @@
+{
+  "name": "Remix خياط عبدالعزيز نايف — خياط نسائي | Abdulaziz Nayef Ladies Tailor",
+  "description": "Bespoke ladies\u0027 tailoring, wedding dresses, embroidery, patterning, perforation, and crushing in Riyadh boutique #128. Fashion Stitches Your Story ♡.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
