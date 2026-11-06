@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ZoomIn, MessageCircle } from 'lucide-react';
+import { ZoomIn } from 'lucide-react';
 import { Category, Design, Locale } from '../../types/boutique';
 import { UI_COPY, formatPriceSar } from '../../i18n/translations';
 import { LuxuryImage } from './LuxuryImage';
+import { WhatsAppIcon } from './WhatsAppIcon';
 
 interface DesignCardProps {
   design: Design;
@@ -95,7 +96,7 @@ export const DesignCard: React.FC<DesignCardProps> = ({
               to={`/${locale}/custom-order?design=${design.id}`}
               className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium bg-[#171512] text-[#F5F0E7] hover:bg-[#D2B477] hover:text-[#171512] transition-colors whitespace-nowrap shrink-0"
             >
-              <MessageCircle className="w-3.5 h-3.5 shrink-0" />
+              <WhatsAppIcon className="w-3.5 h-3.5 shrink-0" />
               <span>{t.commissionNow}</span>
             </Link>
           </div>

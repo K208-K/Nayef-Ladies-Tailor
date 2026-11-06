@@ -4,6 +4,7 @@ import { ArrowRight, ArrowLeft } from 'lucide-react';
 import { Locale } from '../types/boutique';
 import { UI_COPY } from '../i18n/translations';
 import { LuxuryImage } from '../components/common/LuxuryImage';
+import { WhatsAppIcon } from '../components/common/WhatsAppIcon';
 
 interface ServicesPageProps {
   locale: Locale;
@@ -143,6 +144,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ locale }) => {
                     to={`/${locale}/custom-order`}
                     className="inline-flex items-center gap-2 px-5 py-3 text-xs font-medium bg-[#171512] text-[#F5F0E7] hover:bg-[#D2B477] hover:text-[#171512] transition-colors whitespace-nowrap"
                   >
+                    <WhatsAppIcon className="w-3.5 h-3.5 shrink-0" />
                     <span>
                       {locale === 'ar' ? 'اطلبي هذه الخدمة عبر واتساب' : 'Commission via WhatsApp'}
                     </span>

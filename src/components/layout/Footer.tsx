@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { Locale } from '../../types/boutique';
 import { UI_COPY } from '../../i18n/translations';
 import { useStore } from '../../context/StoreContext';
-import { buildWhatsAppUrl } from '../../utils/whatsapp';
 import { Facebook, Instagram, Youtube } from 'lucide-react';
 
 import { BrandLogo } from '../common/BrandLogo';
@@ -34,12 +33,6 @@ export const Footer: React.FC<FooterProps> = ({ locale }) => {
   const { settings, categories } = useStore();
   const t = UI_COPY[locale].nav;
 
-  const salonGreeting =
-    locale === 'ar'
-      ? 'مرحباً خياط عبدالعزيز نايف النسائي (متجر ١٢٨)، أود الاستفسار عن تفصيل فساتين الزفاف وحجز موعد قياس.'
-      : 'Greetings Abdulaziz Nayef Ladies Tailor (Store #128), I would like to inquire about bespoke tailoring and fitting appointments.';
-
-  const directWaHref = buildWhatsAppUrl(settings.whatsappNumber, salonGreeting);
   const normalizeSocialHref = (platform: string, value: string | undefined): string | undefined => {
     const trimmed = value?.trim();
     if (!trimmed) return undefined;
@@ -187,14 +180,6 @@ export const Footer: React.FC<FooterProps> = ({ locale }) => {
               >
                 {t.customOrder}
               </Link>
-              <a
-                href={directWaHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-4 py-2.5 text-xs font-medium border border-[#D2B477]/45 text-[#F5F0E7] hover:border-[#D2B477] hover:text-[#D2B477] transition-colors whitespace-nowrap"
-              >
-                {locale === 'ar' ? 'واتساب المباشر' : 'Direct WhatsApp'}
-              </a>
             </div>
           </div>
         </div>

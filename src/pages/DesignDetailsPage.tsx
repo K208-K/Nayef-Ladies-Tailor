@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { ArrowLeft, ArrowRight, ZoomIn, MessageCircle, DoorOpen } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ZoomIn, DoorOpen } from 'lucide-react';
 import { Locale } from '../types/boutique';
 import { UI_COPY, formatPriceSar } from '../i18n/translations';
 import { useStore } from '../context/StoreContext';
 import { LuxuryImage } from '../components/common/LuxuryImage';
 import { DesignCard } from '../components/common/DesignCard';
 import { ImageLightbox } from '../components/common/ImageLightbox';
+import { WhatsAppIcon } from '../components/common/WhatsAppIcon';
 
 interface DesignDetailsPageProps {
   locale: Locale;
@@ -212,7 +213,7 @@ export const DesignDetailsPage: React.FC<DesignDetailsPageProps> = ({ locale }) 
                 to={orderHref}
                 className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 text-sm font-medium bg-[#171512] text-[#F5F0E7] hover:bg-[#D2B477] hover:text-[#171512] transition-colors whitespace-nowrap"
               >
-                <MessageCircle className="w-4 h-4 shrink-0" />
+                <WhatsAppIcon className="w-4 h-4 shrink-0" />
                 <span>{t.commissionWhatsapp}</span>
               </Link>
 

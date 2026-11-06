@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Check, Copy, MessageCircle } from 'lucide-react';
+import { Check, Copy } from 'lucide-react';
 import { Locale, MeasurementMethod, Order } from '../types/boutique';
 import { UI_COPY, formatPriceSar } from '../i18n/translations';
 import { useStore } from '../context/StoreContext';
 import { buildOrderWhatsAppMessage, buildWhatsAppUrl } from '../utils/whatsapp';
 import { LuxuryImage } from '../components/common/LuxuryImage';
+import { WhatsAppIcon } from '../components/common/WhatsAppIcon';
 
 interface CustomOrderPageProps {
   locale: Locale;
@@ -213,7 +214,7 @@ export const CustomOrderPage: React.FC<CustomOrderPageProps> = ({ locale }) => {
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 text-sm font-medium bg-[#171512] text-[#D2B477] hover:bg-[#D2B477] hover:text-[#171512] transition-colors whitespace-nowrap"
               >
-                <MessageCircle className="w-4 h-4 shrink-0" />
+                <WhatsAppIcon className="w-4 h-4 shrink-0" />
                 <span>{t.openWhatsappBtn}</span>
               </a>
 
@@ -585,7 +586,7 @@ export const CustomOrderPage: React.FC<CustomOrderPageProps> = ({ locale }) => {
                   disabled={submitting}
                   className="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 text-xs font-medium bg-[#171512] text-[#D2B477] hover:bg-[#D2B477] hover:text-[#171512] transition-colors disabled:opacity-50 whitespace-nowrap"
                 >
-                  <MessageCircle className="w-4 h-4 shrink-0" />
+                  <WhatsAppIcon className="w-4 h-4 shrink-0" />
                   <span>{submitting ? t.saving : t.saveAndGenerate}</span>
                 </button>
               </div>

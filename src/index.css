@@ -69,6 +69,44 @@
   scrollbar-width: none;
 }
 
+@keyframes whatsapp-icon-breathe {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 0 rgba(210, 180, 119, 0));
+  }
+  50% {
+    transform: scale(1.09);
+    filter: drop-shadow(0 0 7px rgba(210, 180, 119, 0.72));
+  }
+}
+
+.whatsapp-order-button,
+.whatsapp-floating-button {
+  color: #D2B477;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  transition: color 220ms ease, filter 220ms ease, transform 220ms ease;
+}
+
+.whatsapp-order-button:hover,
+.whatsapp-floating-button:hover {
+  color: #e0c58e;
+  filter: drop-shadow(0 0 8px rgba(210, 180, 119, 0.6));
+  transform: scale(1.08);
+}
+
+.whatsapp-order-button:focus-visible,
+.whatsapp-floating-button:focus-visible {
+  outline: 2px solid #D2B477;
+  outline-offset: 3px;
+}
+
+.whatsapp-order-icon {
+  animation: whatsapp-icon-breathe 2.6s ease-in-out infinite;
+  transform-origin: center;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;

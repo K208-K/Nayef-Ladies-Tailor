@@ -5,7 +5,6 @@ import {
   Plus,
   Trash2,
   Edit3,
-  MessageCircle,
   Upload,
   Check,
   MapPin,
@@ -25,6 +24,7 @@ import { useStore } from '../context/StoreContext';
 import { ASSET_OPTIONS, resolveAssetUrl } from '../data/assets';
 import { formatPriceSar } from '../i18n/translations';
 import { buildWhatsAppUrl } from '../utils/whatsapp';
+import { WhatsAppIcon } from '../components/common/WhatsAppIcon';
 import { LuxuryImage } from '../components/common/LuxuryImage';
 
 interface AdminPageProps {
@@ -791,7 +791,7 @@ export const AdminPage: React.FC<AdminPageProps> = ({ locale }) => {
                         rel="noopener noreferrer"
                         className="w-full inline-flex items-center justify-center gap-2 px-4 py-2 text-xs font-medium bg-[#171512] text-[#D2B477] hover:bg-[#D2B477] hover:text-[#171512] transition-colors whitespace-nowrap"
                       >
-                        <MessageCircle className="w-3.5 h-3.5" />
+                        <WhatsAppIcon className="w-3.5 h-3.5" />
                         <span>Message Client on WhatsApp</span>
                       </a>
                     </div>

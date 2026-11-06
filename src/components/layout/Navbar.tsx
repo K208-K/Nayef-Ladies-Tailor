@@ -6,6 +6,8 @@ import { UI_COPY } from '../../i18n/translations';
 import { useStore } from '../../context/StoreContext';
 
 import { BrandLogo } from '../common/BrandLogo';
+import { WhatsAppIcon } from '../common/WhatsAppIcon';
+import { buildWhatsAppUrl } from '../../utils/whatsapp';
 
 interface NavbarProps {
   locale: Locale;
@@ -13,9 +15,16 @@ interface NavbarProps {
 
 export const Navbar: React.FC<NavbarProps> = ({ locale }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [whatsappMenuOpen, setWhatsappMenuOpen] = useState(false);
   const location = useLocation();
   const { settings } = useStore();
   const t = UI_COPY[locale].nav;
+  const directWhatsAppHref = buildWhatsAppUrl(
+    settings.whatsappNumber,
+    locale === 'ar'
+      ? 'مرحباً، أود التواصل مباشرة مع خياط عبدالعزيز نايف النسائي.'
+      : 'Greetings, I would like to speak directly with Abdulaziz Nayef Ladies Tailor.'
+  );
 
   const targetLocale: Locale = locale === 'en' ? 'ar' : 'en';
   const switchedPath = location.pathname.replace(/^\/(en|ar)/, `/${targetLocale}`) || `/${targetLocale}`;
@@ -87,12 +96,49 @@ export const Navbar: React.FC<NavbarProps> = ({ locale }) => {
             <span>{t.switchLang}</span>
           </Link>
 
-          <Link
-            to={`/${locale}/custom-order`}
-            className="hidden sm:inline-flex items-center justify-center px-4 py-2 text-xs font-medium bg-[#D2B477] text-[#171512] hover:bg-[#e0c58e] transition-colors duration-150 whitespace-nowrap shrink-0"
+          <div
+            className="hidden sm:flex relative items-center"
+            onPointerEnter={(event) => {
+              if (event.pointerType === 'mouse') setWhatsappMenuOpen(true);
+            }}
+            onPointerLeave={(event) => {
+              if (event.pointerType === 'mouse') setWhatsappMenuOpen(false);
+            }}
           >
-            {t.customOrder}
-          </Link>
+            {whatsappMenuOpen && (
+              <div
+                className="absolute top-full end-0 flex flex-col gap-1 min-w-52 p-2 bg-[#171512] border border-[#D2B477]/45 shadow-xl"
+                aria-label={locale === 'ar' ? 'خيارات واتساب' : 'WhatsApp options'}
+              >
+                <Link
+                  to={`/${locale}/custom-order`}
+                  className="min-h-11 px-4 py-3 text-sm text-start text-[#F5F0E7] hover:bg-[#D2B477] hover:text-[#171512] transition-colors"
+                  onClick={() => setWhatsappMenuOpen(false)}
+                >
+                  {locale === 'ar' ? 'طلب مخصص' : 'Custom Order'}
+                </Link>
+                <a
+                  href={directWhatsAppHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="min-h-11 px-4 py-3 text-sm text-start text-[#F5F0E7] hover:bg-[#D2B477] hover:text-[#171512] transition-colors"
+                  onClick={() => setWhatsappMenuOpen(false)}
+                >
+                  {locale === 'ar' ? 'واتساب مباشر' : 'Direct WhatsApp'}
+                </a>
+              </div>
+            )}
+            <button
+              type="button"
+              className="whatsapp-order-button inline-flex items-center justify-center w-12 h-12 shrink-0"
+              title={t.customOrder}
+              aria-label={t.customOrder}
+              aria-expanded={whatsappMenuOpen}
+              onClick={() => setWhatsappMenuOpen((open) => !open)}
+            >
+              <WhatsAppIcon className="whatsapp-order-icon w-7 h-7" />
+            </button>
+          </div>
 
           <button
             type="button"

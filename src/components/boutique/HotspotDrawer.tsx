@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { X, ArrowUpRight, MessageCircle, Check } from 'lucide-react';
+import { X, ArrowUpRight, Check } from 'lucide-react';
 import { BoutiqueHotspot, Category, Design, Locale } from '../../types/boutique';
 import { UI_COPY, formatPriceSar } from '../../i18n/translations';
 import { LuxuryImage } from '../common/LuxuryImage';
+import { WhatsAppIcon } from '../common/WhatsAppIcon';
 
 interface HotspotDrawerProps {
   hotspot: BoutiqueHotspot | null;
@@ -113,7 +114,7 @@ export const HotspotDrawer: React.FC<HotspotDrawerProps> = ({
             to={`/${locale}/custom-order?design=${design.id}`}
             className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 text-xs font-medium bg-[#D2B477] text-[#171512] hover:bg-[#e2c78e] transition-colors whitespace-nowrap"
           >
-            <MessageCircle className="w-4 h-4 shrink-0" />
+            <WhatsAppIcon className="w-4 h-4 shrink-0" />
             <span>{t.orderWhatsapp}</span>
           </Link>
 

@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { MessageCircle, Check } from 'lucide-react';
+import { Check } from 'lucide-react';
 import { Locale } from '../types/boutique';
 import { UI_COPY } from '../i18n/translations';
 import { useStore } from '../context/StoreContext';
 import { buildWhatsAppUrl } from '../utils/whatsapp';
 import { LuxuryImage } from '../components/common/LuxuryImage';
+import { WhatsAppIcon } from '../components/common/WhatsAppIcon';
 
 interface ContactPageProps {
   locale: Locale;
@@ -107,7 +108,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ locale }) => {
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 px-4 py-2.5 text-xs font-medium bg-[#171512] text-[#F5F0E7] hover:bg-[#D2B477] hover:text-[#171512] transition-colors whitespace-nowrap"
                 >
-                  <MessageCircle className="w-3.5 h-3.5" />
+                  <WhatsAppIcon className="w-3.5 h-3.5" />
                   <span>{t.directWhatsapp}</span>
                 </a>
               </div>
